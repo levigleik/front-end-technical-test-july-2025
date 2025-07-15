@@ -60,7 +60,7 @@ Você pode ir além do básico com qualquer um dos itens abaixo (não obrigatór
 ## 📂 Como começar
 
 1. Acesse o repositório base do desafio:  
-   👉 [https://github.com/match-sales/front-end-techincal-test-july-2025](https://github.com/match-sales/front-end-techincal-test-july-2025)
+   👉 [https://github.com/match-sales/front-end-techincal-test-july-2025](https://github.com/match-sales/front-end-technical-test-july-2025)
 
 2. Faça um **fork** do repositório para a sua conta no GitHub.
 
