@@ -53,6 +53,7 @@ Crie uma página acessível em `/users` com as seguintes funcionalidades:
 Você pode ir além do básico com qualquer um dos itens abaixo (não obrigatório):
 - Criar um campo de filtro na listagem por nome.
 - Permitir editar um usuário existente (interface apenas).
+- Faça o máximo de commits seguindo a semântica do gitflow(Conventional Commits)
 
 ---
 
@@ -75,6 +76,7 @@ git clone https://github.com/match-sales/front-end-techincal-test-july-2025.git
 - Crie um `README.md` com:
   - Instruções para rodar o projeto localmente (`npm install`, `npm run dev`, etc)
   - Prints ou descrição da funcionalidade
+  - Explique seu processo de criação
 - (Opcional) Faça o deploy no [Vercel](https://vercel.com/)
 
 ---
