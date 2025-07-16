@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
+import Navbar from "@/components/navbar";
 import Providers from "@/providers";
 
 export const metadata: Metadata = {
@@ -21,9 +22,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="pt">
 			<body className={`${fontSans.variable} antialiased`}>
-				<Providers>{children}</Providers>
+				<Providers>
+					<header>
+						<Navbar />
+					</header>
+					<main className="container mx-auto p-4">{children}</main>
+				</Providers>
 			</body>
 		</html>
 	);
