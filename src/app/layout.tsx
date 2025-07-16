@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
+import Providers from "@/providers";
 
 export const metadata: Metadata = {
 	title: {
@@ -21,7 +22,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${fontSans.variable} antialiased`}>{children}</body>
+			<body className={`${fontSans.variable} antialiased`}>
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	);
 }
