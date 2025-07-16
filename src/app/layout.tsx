@@ -25,10 +25,10 @@ export default function RootLayout({
 		<html lang="pt">
 			<body className={`${fontSans.variable} antialiased`}>
 				<Providers>
-					<header>
+					<div className="min-h-screen flex flex-col">
 						<Navbar />
-					</header>
-					<main className="container mx-auto p-4">{children}</main>
+						<main className="container mx-auto p-4">{children}</main>
+					</div>
 				</Providers>
 			</body>
 		</html>
