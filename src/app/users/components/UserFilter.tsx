@@ -2,8 +2,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Filter, History } from "lucide-react";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import type { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -41,6 +41,23 @@ export default function UserFilter({ onSearch }: UserFilterProps) {
 	});
 
 	const [modalOpen, setModalOpen] = useState(false);
+	
+	// Observa mudanças no campo de busca
+	const nameValue = useWatch({
+		control: form.control,
+		name: "name",
+	});
+
+	// Aplica debounce nas mudanças
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			if (nameValue !== undefined) {
+				onSearch(nameValue);
+			}
+		}, 1000);
+
+		return () => clearTimeout(timer);
+	}, [nameValue, onSearch]);
 
 	const handleOpenChange = () => {
 		setModalOpen((open) => !open);
