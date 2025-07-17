@@ -2,8 +2,10 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Filter, History } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { set, type z } from "zod";
+import { toast } from "sonner";
+import type { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -22,10 +24,8 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { resetModifications } from "../[id]/functions";
 import { SearchUserSchema } from "../schema";
-import { useState } from "react";
-import { deleteUser, resetModifications } from "../[id]/functions";
-import { toast } from "sonner";
 
 export default function UserFilter() {
 	const form = useForm<z.infer<typeof SearchUserSchema>>({
@@ -42,18 +42,6 @@ export default function UserFilter() {
 	};
 
 	const queryClient = useQueryClient();
-
-	const { mutateAsync: mutateDeleteUser } = useMutation({
-		mutationFn: async (id: number) => deleteUser(queryClient, id),
-		onError: () => {
-			toast.error("Erro ao excluir usuário. Por favor, tente novamente.");
-		},
-		onSuccess: () => {
-			toast.success("Usuário excluído com sucesso!");
-			form.reset();
-		},
-		mutationKey: ["delete-user"],
-	});
 
 	const { mutateAsync: mutateResetModifications } = useMutation({
 		mutationFn: async () => resetModifications(queryClient),
