@@ -1,18 +1,17 @@
+import { Menu } from "lucide-react";
 import Link from "next/link";
-import ThemeSwitcher from "../theme";
 import { Button } from "@/components/ui/button";
 import {
 	Sheet,
 	SheetContent,
 	SheetHeader,
-	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import ThemeSwitcher from "../theme";
 
 const Navbar = () => {
 	return (
-		<div className="">
+		<header>
 			<nav className="p-4 hidden lg:flex">
 				<div className="container mx-auto flex items-center justify-between">
 					<div className="font-bold text-xl">Gerenciador de usuários</div>
@@ -89,7 +88,7 @@ const Navbar = () => {
 					</Sheet>
 				</div>
 			</div>
-		</div>
+		</header>
 	);
 };
 
