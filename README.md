@@ -24,6 +24,7 @@ Sistema de gerenciamento de usuários desenvolvido com Next.js, integrando tecno
 - **React Hook Form** - Gerenciamento de formulários
 - **Zod** - Validação de schemas
 - **Axios** - Cliente HTTP
+- **nuqs** - Para persistência do filtro na url
 - **Lucide React** - Ícones
 - **Sonner** - Toasts de notificação
 - **Biome** - Linting e formatação
