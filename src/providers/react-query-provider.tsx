@@ -10,7 +10,6 @@ let persister: any;
 export default function ReactQueryProvider({ children }: PropsWithChildren) {
 	const [isClient, setIsClient] = useState(false);
 	const [queryClient, setQueryClient] = useState<QueryClient>();
-	// const adBlockDetected = useDetectAdBlock()
 
 	useEffect(() => {
 		setIsClient(typeof window !== "undefined");
