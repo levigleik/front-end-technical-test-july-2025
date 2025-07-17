@@ -79,7 +79,8 @@ export function UserForm({ id }: { id: number }) {
 		}
 	}, [user, form]);
 
-	if (!user && id) {
+	if (!user && Number.isSafeInteger(id)) {
+		// coloquei isso para tratar caso seja zero ou negativo
 		return (
 			<Alert variant="destructive">
 				<AlertCircle />
