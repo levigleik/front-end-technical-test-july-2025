@@ -2,6 +2,7 @@
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
+import Lenis from 'lenis'
 import { type PropsWithChildren, useEffect, useState } from "react";
 import { queryClientConfig } from "@/lib/constants";
 
@@ -30,6 +31,11 @@ export default function ReactQueryProvider({ children }: PropsWithChildren) {
 	if (!queryClient) {
 		return null;
 	}
+
+	const _lenis = new Lenis({
+		autoRaf: true,
+	});
+	
 	return (
 		<PersistQueryClientProvider
 			client={queryClient}
