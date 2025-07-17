@@ -27,7 +27,7 @@ export default function RootLayout({
 				<Providers>
 					<div className="min-h-screen flex flex-col">
 						<Navbar />
-						<main className="container mx-auto p-4">{children}</main>
+						<main className="container mx-auto p-4 lg:p-0">{children}</main>
 					</div>
 				</Providers>
 			</body>
