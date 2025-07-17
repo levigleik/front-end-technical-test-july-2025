@@ -11,7 +11,8 @@ export default async function UserFormPage({
 }) {
 	const { id } = await params;
 	return (
-		<Card className="container mx-auto py-12">
+		<div className="container mx-auto md:py-12 py-6">
+		<Card>
 			<CardHeader className="flex justify-between">
 				{Number(id) ? (
 					<h2 className="text-xl">Editar usuário</h2>
@@ -29,5 +30,6 @@ export default async function UserFormPage({
 				<UserForm id={Number(id)} />
 			</CardContent>
 		</Card>
+		</div>
 	);
 }

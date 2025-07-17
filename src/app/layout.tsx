@@ -30,9 +30,9 @@ return (
 	<html lang="pt">
 		<body className={`${fontSans.variable} antialiased lenis lenis-smooth`}>
 			<Providers>
-				<div className="min-h-screen flex flex-col">
+				<div className="min-h-screen my-auto flex flex-col">
 					<Navbar />
-					<main className="container mx-auto p-4 lg:p-0">{children}</main>
+					<main className="container mx-auto px-4 lg:p-0 flex-1">{children}</main>
 					<Footer />
 				</div>
 				<Toaster richColors position="top-center" />
