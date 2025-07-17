@@ -2,9 +2,12 @@ import type { Metadata } from "next";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
+import 'lenis/dist/lenis.css'
 import Navbar from "@/components/navbar";
 import Providers from "@/providers";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
+import Footer from "@/components/footer";
+import Lenis from 'lenis'
 
 export const metadata: Metadata = {
 	title: {
@@ -22,17 +25,19 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	return (
-		<html lang="pt">
-			<body className={`${fontSans.variable} antialiased`}>
-				<Providers>
-					<div className="min-h-screen flex flex-col">
-						<Navbar />
-						<main className="container mx-auto p-4 lg:p-0">{children}</main>
-					</div>
-					<Toaster richColors position="top-center" />
-				</Providers>
-			</body>
-		</html>
-	);
+
+return (
+	<html lang="pt">
+		<body className={`${fontSans.variable} antialiased lenis lenis-smooth`}>
+			<Providers>
+				<div className="min-h-screen flex flex-col">
+					<Navbar />
+					<main className="container mx-auto p-4 lg:p-0">{children}</main>
+					<Footer />
+				</div>
+				<Toaster richColors position="top-center" />
+			</Providers>
+		</body>
+	</html>
+);
 }
