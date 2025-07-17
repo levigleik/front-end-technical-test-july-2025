@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/site";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Providers from "@/providers";
+import { Toaster } from "@/components/ui/sonner"
 
 export const metadata: Metadata = {
 	title: {
@@ -29,6 +30,7 @@ export default function RootLayout({
 						<Navbar />
 						<main className="container mx-auto p-4 lg:p-0">{children}</main>
 					</div>
+					<Toaster richColors position="top-center" />
 				</Providers>
 			</body>
 		</html>
