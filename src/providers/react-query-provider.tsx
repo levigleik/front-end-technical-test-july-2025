@@ -1,10 +1,42 @@
 "use client";
-import { QueryClientProvider } from "@tanstack/react-query";
-import type { PropsWithChildren } from "react";
-import { queryClient } from "@/lib/constants";
+import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
+import { QueryClient } from "@tanstack/react-query";
+import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
+import { type PropsWithChildren, useEffect, useState } from "react";
+import { queryClientConfig } from "@/lib/constants";
+
+let persister: any;
 
 export default function ReactQueryProvider({ children }: PropsWithChildren) {
+	const [isClient, setIsClient] = useState(false);
+	const [queryClient, setQueryClient] = useState<QueryClient>();
+	// const adBlockDetected = useDetectAdBlock()
+
+	useEffect(() => {
+		setIsClient(typeof window !== "undefined");
+	}, []);
+
+	useEffect(() => {
+		if (isClient) {
+			persister = createAsyncStoragePersister({
+				storage: window.localStorage,
+			});
+			setQueryClient(new QueryClient(queryClientConfig));
+		}
+	}, [isClient]);
+
+	if (!isClient) {
+		return null;
+	}
+	if (!queryClient) {
+		return null;
+	}
 	return (
-		<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+		<PersistQueryClientProvider
+			client={queryClient}
+			persistOptions={{ persister }}
+		>
+			{children}
+		</PersistQueryClientProvider>
 	);
 }
