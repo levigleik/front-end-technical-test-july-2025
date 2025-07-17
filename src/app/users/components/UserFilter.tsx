@@ -27,7 +27,12 @@ import { Input } from "@/components/ui/input";
 import { resetModifications } from "../[id]/functions";
 import { SearchUserSchema } from "../schema";
 
-export default function UserFilter() {
+interface UserFilterProps {
+	onSearch: (name: string) => void;
+}
+
+export default function UserFilter({ onSearch }: UserFilterProps) {
+	const queryClient = useQueryClient();
 	const form = useForm<z.infer<typeof SearchUserSchema>>({
 		resolver: zodResolver(SearchUserSchema),
 		defaultValues: {
@@ -40,8 +45,6 @@ export default function UserFilter() {
 	const handleOpenChange = () => {
 		setModalOpen((open) => !open);
 	};
-
-	const queryClient = useQueryClient();
 
 	const { mutateAsync: mutateResetModifications } = useMutation({
 		mutationFn: async () => resetModifications(queryClient),
@@ -57,7 +60,7 @@ export default function UserFilter() {
 	});
 
 	function onSubmit(data: z.infer<typeof SearchUserSchema>) {
-		alert(`Searching for user: ${data.name}`);
+		onSearch(data.name);
 	}
 
 	return (

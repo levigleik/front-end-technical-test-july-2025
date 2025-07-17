@@ -3,6 +3,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { AlertCircle, Plus } from "lucide-react";
 import Link from "next/link";
+import {  useQueryState } from "nuqs";
+import { useMemo, } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -12,6 +14,8 @@ import UserComp from "./User";
 import UserFilter from "./UserFilter";
 
 export default function UserListing() {
+	const [searchTerm, setSearchTerm] = useQueryState("");
+	
 	const {
 		data: users,
 		isLoading,
@@ -20,10 +24,24 @@ export default function UserListing() {
 		queryFn: async () => getData<UserApiProps[]>({ url: "/users" }),
 		queryKey: ["get-user"],
 	});
+
+	const filteredUsers = useMemo(() => {
+		if (!users) return [];
+		if (!searchTerm) return users;
+		
+		return users.filter((user) =>
+			user.name.toLowerCase().includes(searchTerm.toLowerCase())
+		);
+	}, [users, searchTerm]);
+
+	const handleSearch = (name: string) => {
+		setSearchTerm(name);
+	};
+
 	return (
 		<>
 			<div className="flex md:items-center justify-between mb-4 flex-col md:flex-row gap-4">
-				<UserFilter />
+				<UserFilter onSearch={handleSearch} />
 				<Button variant="outline" className="rounded-full max-w-sm" asChild>
 					<Link href="/users/new">
 						Adicionar usuário <Plus className="size-4" />
@@ -69,7 +87,7 @@ export default function UserListing() {
 						</AlertDescription>
 					</Alert>
 				)}
-				{users?.map((user) => (
+				{filteredUsers.map((user) => (
 					<UserComp
 						key={user.id}
 						user={{
