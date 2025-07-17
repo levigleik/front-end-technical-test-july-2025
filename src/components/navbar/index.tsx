@@ -15,7 +15,7 @@ const Navbar = () => {
 			<nav className="p-4 hidden lg:flex">
 				<div className="container mx-auto flex items-center justify-between">
 					<div className="font-bold text-xl">Gerenciador de usuários</div>
-					<div className="flex items-center space-x-4">
+					<div className="flex items-center gap-x-4">
 						<Link
 							href="/"
 							className="hover:text-primary transition-all duration-200 ease-in"
