@@ -1,6 +1,7 @@
-import { Mail, MapPin, Pencil, Trash, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Mail, MapPin, Pencil, User } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import UserDelete from "./UserDelete";
 
 interface UserCompProps {
 	user: {
@@ -8,7 +9,7 @@ interface UserCompProps {
 		name: string;
 		email: string;
 		city: string;
-	};
+	}; // deixei apenas o que é necessário para o componente, princípio de SOLID
 }
 
 export default function UserComp({ user }: UserCompProps) {
@@ -35,13 +36,7 @@ export default function UserComp({ user }: UserCompProps) {
 							<Pencil />
 						</Link>
 					</Button>
-					<Button
-						size="icon"
-						variant="outline"
-						className="border-red-500 text-red-500 hover:bg-red-100 hover:text-red-600"
-					>
-						<Trash />
-					</Button>
+					<UserDelete id={user.id} />
 				</div>
 			</div>
 		</div>

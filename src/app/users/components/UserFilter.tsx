@@ -1,9 +1,9 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Filter, History } from "lucide-react";
 import { useForm } from "react-hook-form";
-import type { z } from "zod";
+import { set, type z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -24,6 +24,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { SearchUserSchema } from "../schema";
 import { useState } from "react";
+import { deleteUser, resetModifications } from "../[id]/functions";
+import { toast } from "sonner";
 
 export default function UserFilter() {
 	const form = useForm<z.infer<typeof SearchUserSchema>>({
@@ -41,11 +43,30 @@ export default function UserFilter() {
 
 	const queryClient = useQueryClient();
 
-	function resetModifications() {
-		form.reset();
-		queryClient.invalidateQueries({ queryKey: ["get-user"] });
-		setModalOpen(false);
-	}
+	const { mutateAsync: mutateDeleteUser } = useMutation({
+		mutationFn: async (id: number) => deleteUser(queryClient, id),
+		onError: () => {
+			toast.error("Erro ao excluir usuário. Por favor, tente novamente.");
+		},
+		onSuccess: () => {
+			toast.success("Usuário excluído com sucesso!");
+			form.reset();
+		},
+		mutationKey: ["delete-user"],
+	});
+
+	const { mutateAsync: mutateResetModifications } = useMutation({
+		mutationFn: async () => resetModifications(queryClient),
+		onError: () => {
+			toast.error("Erro ao resetar modificações. Por favor, tente novamente.");
+		},
+		onSuccess: () => {
+			toast.success("Modificações resetadas com sucesso!");
+			form.reset();
+			setModalOpen(false);
+		},
+		mutationKey: ["reset-modifications"],
+	});
 
 	function onSubmit(data: z.infer<typeof SearchUserSchema>) {
 		alert(`Searching for user: ${data.name}`);
@@ -106,7 +127,10 @@ export default function UserFilter() {
 								>
 									Cancelar
 								</Button>
-								<Button type="button" onClick={resetModifications}>
+								<Button
+									type="button"
+									onClick={() => mutateResetModifications()}
+								>
 									Confirmar
 								</Button>
 							</DialogFooter>
