@@ -16,10 +16,16 @@ const Navbar = () => {
 				<div className="container mx-auto flex items-center justify-between">
 					<div className="font-bold text-xl">Gerenciador de usuários</div>
 					<div className="flex items-center space-x-4">
-						<Link href="/" className="hover:text-primary">
+						<Link
+							href="/"
+							className="hover:text-primary transition-all duration-200 ease-in"
+						>
 							Início
 						</Link>
-						<Link href="/users" className="hover:text-primary">
+						<Link
+							href="/users"
+							className="hover:text-primary transition-all duration-200 ease-in"
+						>
 							Usuários
 						</Link>
 						<ThemeSwitcher />
@@ -56,12 +62,8 @@ const Navbar = () => {
 						<SheetContent className="overflow-y-auto">
 							<SheetHeader></SheetHeader>
 							<div className="flex flex-col gap-6 p-4">
-								<Link href="/" className=" hover:text-primary">
-									Início
-								</Link>
-								<Link href="/users" className="hover:text-primary">
-									Usuários
-								</Link>
+								<Link href="/">Início</Link>
+								<Link href="/users">Usuários</Link>
 								<div className="flex gap-3">
 									<ThemeSwitcher />
 									<Button variant="outline" className="rounded-full" asChild>
