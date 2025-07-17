@@ -84,7 +84,6 @@ export default function UserFilter() {
 						variant="outline"
 						size="icon"
 						className="rounded-full"
-						onClick={() => alert("Filter clicked")}
 					>
 						<Filter className="size-4" />
 					</Button>
