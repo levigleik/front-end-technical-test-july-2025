@@ -1,84 +1,84 @@
-![tecnical-test](https://github.com/user-attachments/assets/800b6db0-76c0-4b91-a76f-3e8e8b6cb9b3)
-# 🧪 Desafio Técnico - Desenvolvedor Front-end Júnior
+# 👥 Gerenciador de Usuários
 
-Bem-vindo(a) ao nosso teste técnico! Este desafio tem como objetivo avaliar suas habilidades práticas com **React + Next.js + React Query + Tailwind + React Hook Form + Zod**.
+Sistema de gerenciamento de usuários desenvolvido com Next.js, integrando tecnologias modernas, interface responsiva e funcionalidades pensadas para uma melhor experiência do usuário.
 
----
+## ✨ Funcionalidades
 
-## 🎯 Objetivo
+- 👤 Listagem de usuários com dados da API JSONPlaceholder
+- ➕ Criação de novos usuários
+- ✏️ Edição de usuários existentes
+- 🔍 Filtro de usuários por nome
+- 🗑️ Exclusão de usuários
+- 🌓 Tema claro/escuro
+- 🔄 Persistência de modificações locais
+- 📱 Interface totalmente responsiva
 
-Criar uma interface de **listagem e criação de usuários**, consumindo uma API externa, com boas práticas de código, organização visual e simulação de um fluxo de cadastro.
+## 🛠️ Tecnologias Utilizadas
 
----
+- **Next.js 15.4.1** - Framework React com SSR
+- **React 19.1.0** - Biblioteca UI
+- **TypeScript** - Tipagem estática
+- **TailwindCSS** - Estilização
+- **Shadcn/ui** - Componentes base
+- **@tanstack/react-query** - Gerenciamento de estado e cache
+- **React Hook Form** - Gerenciamento de formulários
+- **Zod** - Validação de schemas
+- **Axios** - Cliente HTTP
+- **Lucide React** - Ícones
+- **Sonner** - Toasts de notificação
+- **Biome** - Linting e formatação
+- **lenis** - Scroll smooth
 
-## 📋 O que você deve fazer
+## 🚀 Como Rodar o Projeto
 
-Crie uma página acessível em `/users` com as seguintes funcionalidades:
-
-### 1. 🔍 Listagem de usuários
-- Buscar os usuários da API: [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
-- Exibir na tela:
-  - **Nome**
-  - **Email**
-  - **Cidade**
-- Usar **React Query** para buscar e armazenar os dados.
-- Exibir mensagens de **carregando** e **erro** quando aplicável.
-
----
-
-### 2. ➕ Formulário de novo usuário
-- Adicionar um botão "**Novo usuário**" que abre um **modal** ou redireciona para a rota `/users/new`.
-- Criar um formulário com os seguintes campos:
-  - Nome (obrigatório)
-  - Email (obrigatório, com validação de formato)
-  - Cidade (opcional)
-- Utilizar:
-  - `react-hook-form` para gerenciar o formulário
-  - `zod` para validação
-- Ao enviar:
-  - Simule a criação de usuário usando `queryClient.setQueryData` para atualizar a lista.
-  - Não é necessário persistir os dados em um backend real.
-
----
-
-### 3. 🎨 Estilização e UX
-- Utilizar **TailwindCSS** para o layout e estilo dos componentes.
-- Usar **ShadcnUI** para componentes acessíveis (ex: botão, modal, etc).
-- Interface deve ser responsiva e acessível
-
----
-
-## 💡 Extras (opcionais, para ir além)
-
-Você pode ir além do básico com qualquer um dos itens abaixo (não obrigatório):
-- Criar um campo de filtro na listagem por nome.
-- Permitir editar um usuário existente (interface apenas).
-- Faça o máximo de commits seguindo a semântica do gitflow(Conventional Commits)
-
----
-
-## 📂 Como começar
-
-1. Acesse o repositório base do desafio:  
-   👉 [https://github.com/match-sales/front-end-techincal-test-july-2025](https://github.com/match-sales/front-end-technical-test-july-2025)
-
-2. Faça um **fork** do repositório para a sua conta no GitHub.
-
-3. Clone o repositório **do seu fork** para sua máquina:
+1. Clone o repositório:
 ```bash
-git clone https://github.com/match-sales/front-end-techincal-test-july-2025.git
+git clone https://github.com/levigleik/front-end-technical-test-july-2025.git
+cd front-end-technical-test-july-2025
 ```
----
 
-## 📦 Entrega
+2. Instale as dependências:
+```bash
+npm install
+```
 
-- Suba o código no GitHub em um repositório público.
-- Crie um `README.md` com:
-  - Instruções para rodar o projeto localmente (`npm install`, `npm run dev`, etc)
-  - Prints ou descrição da funcionalidade
-  - Explique seu processo de criação
-- (Opcional) Faça o deploy no [Vercel](https://vercel.com/)
+3. Rode o projeto em modo de desenvolvimento:
+```bash
+npm run dev
+```
 
----
+4. Acesse o projeto em [http://localhost:3000](http://localhost:3000)
 
-Boa sorte! Se tiver dúvidas de escopo, é melhor perguntar do que assumir, valorizamos a clareza! 🚀
+## 🏗️ Estrutura do Projeto
+
+```
+src/
+├── app/                    # Rotas e páginas
+├── components/            # Componentes reutilizáveis
+├── config/               # Configurações do projeto
+├── lib/                  # Funções utilitárias
+├── providers/           # Providers da aplicação
+├── services/           # Serviços de API
+└── types/             # Tipos TypeScript
+```
+
+## 🎯 Funcionalidades Implementadas
+
+### Listagem de Usuários
+- Exibição de nome, email e cidade
+- Loading state com skeletons
+- Tratamento de erros
+- Paginação dos resultados
+
+### Gerenciamento de Usuários
+- Formulário de criação/edição/exclusão com validação
+- Persistência local com React Query com cache de 24h
+- Feedback visual com toasts
+- Confirmação para ações destrutivas
+
+### UX/UI
+- Design responsivo
+- Temas claro/escuro
+- Feedback visual para todas as ações
+- Componentes acessíveis
+- Tooltips informativos
