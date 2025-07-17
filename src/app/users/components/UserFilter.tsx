@@ -65,7 +65,7 @@ export default function UserFilter() {
 			<Form {...form}>
 				<form
 					onSubmit={form.handleSubmit(onSubmit)}
-					className="flex w-full max-w-sm items-center gap-2"
+					className="flex w-full max-w-sm items-center gap-2 justify-between"
 				>
 					<FormField
 						control={form.control}

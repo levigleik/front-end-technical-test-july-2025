@@ -22,9 +22,9 @@ export default function UserListing() {
 	});
 	return (
 		<>
-			<div className="flex items-center justify-between mb-4">
+			<div className="flex md:items-center justify-between mb-4 flex-col md:flex-row gap-4">
 				<UserFilter />
-				<Button variant="outline" className="rounded-full" asChild>
+				<Button variant="outline" className="rounded-full max-w-sm" asChild>
 					<Link href="/users/new">
 						Adicionar usuário <Plus className="size-4" />
 					</Link>
